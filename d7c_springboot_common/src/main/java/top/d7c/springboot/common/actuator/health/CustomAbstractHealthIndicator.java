@@ -21,9 +21,10 @@ public class CustomAbstractHealthIndicator extends AbstractHealthIndicator {
     protected void doHealthCheck(Builder builder) throws Exception {
         PageResult result = check();
         if (result.isOk()) {
-            builder.up().withDetail("details", result.toString()).build();
+            builder.withDetail("details", result.toString()).up();
+        } else {
+            builder.withDetail("details", result.toString()).down();
         }
-        builder.down().withDetail("details", result.toString()).build();
     }
 
     /**

@@ -18,11 +18,17 @@ public class CustomHealthIndicator implements HealthIndicator {
 
     @Override
     public Health health() {
-        PageResult result = check();
-        if (result.isOk()) {
-            return Health.up().withDetail("details", result.toString()).build();
+        Health.Builder builder = new Health.Builder();
+        PageResult result = null;
+        try {
+            result = check();
+            if (result.isOk()) {
+                return builder.withDetail("details", result.toString()).up().build();
+            }
+        } catch (Exception e) {
+            return builder.withDetail("error", e).down().build();
         }
-        return Health.down().withDetail("details", result.toString()).build();
+        return builder.withDetail("details", result.toString()).down().build();
     }
 
     /**
