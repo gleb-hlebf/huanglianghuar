@@ -30,12 +30,13 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.web.client.RestTemplate;
 
-import top.d7c.oauth2.springboot.CustomAccessTokenConverter;
-import top.d7c.oauth2.springboot.CustomWebResponseExceptionTranslator;
-import top.d7c.plugins.core.StringUtil;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.appinfo.InstanceInfo.InstanceStatus;
 import com.netflix.discovery.EurekaClient;
+
+import top.d7c.oauth2.springboot.CustomAccessTokenConverter;
+import top.d7c.oauth2.springboot.CustomWebResponseExceptionTranslator;
+import top.d7c.plugins.core.StringUtil;
 
 /**
  * @Title: JdbcResourceServerConfiguration
